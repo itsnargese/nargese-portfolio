@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nargese Banu S | AI & Data Science Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for contact links -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Configuration for UI/UX Dark Theme (Deep Slate & Gold) */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'portfolio-bg': '#07090D', /* EVEN DEEPER Dark Slate Base */
+                        'portfolio-card': '#10141C', /* Card Background (Slightly darker for contrast) */
+                        'portfolio-accent': '#FFB74D', /* Vibrant Warm Orange/Gold Accent */
+                        'portfolio-dark': '#F0F6FC', /* Lightest text (Near white) */
+                        'portfolio-soft': '#8B949E', /* Muted gray text */
+                        'portfolio-hero-bg': '#10141C', /* Header background (subtle recess) */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'subtle': '0 4px 15px rgba(0, 0, 0, 0.8)',
+                        'accent-glow': '0 0 18px rgba(255, 183, 77, 0.6)',
+                        'card-glow': '0 0 10px rgba(255, 183, 77, 0.15)',
+                    }
+                }
+            }
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #07090D; /* Max dark background */
+            color: #F0F6FC;
+            line-height: 1.6;
+            /* Removed geometric grid background pattern as requested */
+        }
+
+        /* --- MAX ADVANCED STYLING MODIFICATIONS (DEEPER SHADOWS, NEATER BORDERS) --- */
+        .card {
+            background-color: #10141C;
+            /* Deeper, more noticeable 3D shadow */
+            box-shadow: 
+                0 15px 45px rgba(0, 0, 0, 0.95), /* Strong outer shadow */
+                0 0 10px rgba(255, 183, 77, 0.08); /* Subtle accent glow */
+            border: 1px solid #1E232B; 
+            transition: all 0.3s ease;
+        }
+        .hero-card {
+            /* Most extreme shadow for the main hero element */
+            border: 2px solid rgba(255, 183, 77, 0.4);
+            box-shadow: 
+                0 0 45px rgba(255, 183, 77, 0.2), /* Wide, soft glow */
+                0 20px 60px rgb(214, 204, 15); /* Intense dark shadow */
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: #FFB74D;
+            position: relative;
+            padding-bottom: 15px; /* Increased padding */
+            margin-bottom: 30px; /* Increased margin */
+            letter-spacing: 1px;
+        }
+        .section-title::after {
+            /* Thicker, more pronounced accent line */
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 120px; /* Wider line */
+            height: 4px; /* Thicker line */
+            background-color: #FFB74D;
+            border-radius: 2px;
+            box-shadow: 0 0 8px rgba(255, 183, 77, 0.8); /* Glow effect on the line */
+        }
+        .time-period {
+            font-style: italic;
+            color: #B0B0B0; /* Brighter soft color */
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #FFB74D;
+            text-shadow: 0 0 12px rgba(255, 183, 77, 1); /* Brighter text glow */
+        }
+        .project-card {
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #1E232B;
+        }
+        .project-card:hover {
+            /* Extreme lift and pronounced glow on project hover */
+            transform: translateY(-12px); 
+            border-color: #FFB74D;
+            box-shadow: 
+                0 25px 50px rgba(255, 183, 77, 0.3), /* Strong glow beneath */
+                0 0 15px rgba(255, 183, 77, 0.6); /* Halo around the card */
+            background-color: #13171F; /* Slight background shift */
+        }
+        .experience-box {
+            background-color: #10141C;
+            border: 1px solid rgba(255, 183, 77, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Added initial shadow to boxes */
+            transition: all 0.3s ease;
+        }
+        .experience-box:hover {
+            background-color: #161B22; /* More distinct background change on hover */
+            border-color: #FFB74D;
+            box-shadow: 0 0 20px rgba(255, 183, 77, 0.35); /* Stronger glow on hover */
+            transform: translateY(-5px); /* More significant lift */
+        }
+        .skill-tag {
+            background-color: rgba(255, 183, 77, 0.2); /* Lighter background for visibility */
+            color: #F0F6FC;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6); /* Deeper shadow for tags */
+            border: 1px solid rgba(255, 183, 77, 0.5); /* Clearer border */
+            transition: all 0.2s;
+        }
+        /* --- END ADVANCED STYLING MODIFICATIONS --- */
+    </style>
+</head>
+<body class="p-0 sm:p-4 md:p-8 pt-20"> <!-- Added padding-top for fixed nav -->
+
+    <!-- Fixed Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 bg-161B22/95 backdrop-blur-md z-50 shadow-subtle border-b border-portfolio-accent/30">
+        <div class="max-w-3xl mx-auto px-4 sm:px-8 md:px-0 flex justify-between items-center h-16">
+            <span class="text-xl font-serif font-bold text-portfolio-accent tracking-widest">Nargese Banu</span>
+            <div class="flex space-x-6 text-sm font-medium">
+                <a href="#about" class="text-portfolio-soft nav-link transition duration-300">About Me</a>
+                <a href="#case-studies" class="text-portfolio-soft nav-link transition duration-300">Projects</a>
+                <a href="#skills" class="text-portfolio-soft nav-link transition duration-300">Skills & Experience</a>
+                <a href="#contact" class="text-portfolio-soft nav-link transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container - Single Column Layout -->
+    <div class="max-w-3xl mx-auto space-y-12">
+        
+        <!-- Header / Hero Section: Highly Attractive and Unique -->
+        <header id="about" class="card hero-card p-8 md:p-12 rounded-2xl bg-portfolio-hero-bg transition duration-300">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                
+                <!-- Photo and Main Info -->
+                <div class="flex flex-col items-center w-full">
+                    <!-- The uploaded image is used here -->
+                    <img
+                        src="C:\Users\Windows-11\Desktop\nargese\image\profile.jpeg"
+                        alt="Nargese Banu S Profile Photo"
+                        class="w-44 h-44 object-cover rounded-full ring-4 ring-portfolio-accent mb-6 shadow-accent-glow"
+                        onerror="this.onerror=null;this.src='https://placehold.co/176x176/FFB74D/1F1F1F?text=AI+NBS'"
+                    >
+                    <h1 class="text-7xl font-serif font-extrabold text-portfolio-dark text-center tracking-tighter leading-tight">NARGESE BANU S</h1>
+                    <p class="text-3xl font-light text-portfolio-accent mt-2 mb-8 text-center uppercase tracking-widest">AI & Data Analytics Specialist</p>
+                    
+                    <!-- Contact Links (Quick Access below About Me) -->
+                    <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-base text-portfolio-soft">
+                        <div class="flex items-center">
+                            <i data-lucide="map-pin" class="w-5 h-5 mr-2 text-portfolio-accent"></i>
+                            Coimbatore, Tamil Nadu
+                        </div>
+                        <a href="mailto:itsnargese@gmail.com" class="flex items-center hover:text-portfolio-accent transition duration-200">
+                            <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                            itsnargese@gmail.com
+                        </a>
+                        <a href="tel:9843043378" class="flex items-center hover:text-portfolio-accent transition duration-200">
+                            <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                            9843043378
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Me Section - Strictly from Resume Summary -->
+            <div class="mt-12 pt-6 border-t border-portfolio-soft/30">
+                <h2 class="text-3xl font-serif font-semibold text-portfolio-dark mb-4">Professional Summary</h2>
+                <p class="text-portfolio-soft leading-relaxed text-lg">
+                    Expertise in AI, Data Analytics, and Machine Learning. Proficient in Python, Deep Learning, and Data Visualization. I am passionate about leveraging AI to solve real-world challenges and drive data-driven decisions. I am seeking opportunities to innovate and contribute through my skills in technology and problem-solving.
+                </p>
+            </div>
+        </header>
+
+        <!-- Design Case Studies Section - Reframed as Technical Projects -->
+        <section id="case-studies" class="card p-8 rounded-2xl">
+            <h2 class="section-title text-3xl">Technical Projects</h2>
+            <div class="space-y-8">
+                
+                <!-- I-FLUSH Reframed -->
+                <a href="#contact" class="project-card block p-6 rounded-xl transition duration-300">
+                    <div class="flex gap-6 items-start">
+                        <!-- Image Container (Placeholder for Concept) -->
+                        <img
+                            src="C:\Users\Windows-11\Desktop\nargese\image\iflush.jpeg"
+                            alt="I-FLUSH System Design Concept"
+                            class="hidden sm:block w-36 h-24 object-cover rounded-lg flex-shrink-0 mt-1 shadow-md border border-portfolio-accent/50"
+                            onerror="this.onerror=null;this.src='https://placehold.co/140x90/28559D/FFFFFF?text=I-FLUSH'"
+                        >
+                        <!-- Text Content -->
+                        <div>
+                            <h3 class="project-title text-xl font-bold text-portfolio-dark">I-FLUSH (Smart Flushing System) - SIH 2024</h3>
+                            <p class="text-sm font-medium text-portfolio-soft mb-2">Focus: Cost-Effective Engineering, Water Reduction | <span class="time-period">SIH 2024</span></p>
+                            <p class="text-sm text-portfolio-soft">
+                                A cost-effective suction-based flush system designed for rural areas, reducing water usage while ensuring hygiene. Built with vacuum technology for affordability, efficiency, and easy maintenance.
+                            </p>
+                            <span class="inline-block mt-3 text-xs text-portfolio-accent border border-portfolio-accent/50 px-3 py-1 rounded-full font-semibold bg-portfolio-card/50 shadow-md">Details Available Upon Contact</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Task Scheduler Reframed -->
+                <a href="#contact" class="project-card block p-6 rounded-xl transition duration-300">
+                    <div class="flex gap-6 items-start">
+                        <!-- Image Container (Placeholder for HMI) -->
+                        <img
+                            src="C:\Users\Windows-11\Desktop\nargese\image\task.jpeg"
+                            alt="Task Scheduler System"
+                            class="hidden sm:block w-36 h-24 object-cover rounded-lg flex-shrink-0 mt-1 shadow-md border border-portfolio-accent/50"
+                            onerror="this.onerror=null;this.src='https://placehold.co/140x90/8A4DFF/FFFFFF?text=Scheduler+IoT'"
+                        >
+                        <!-- Text Content -->
+                        <div>
+                            <h3 class="project-title text-xl font-bold text-portfolio-dark">Personal Task Scheduler Integrated with Wall Clock</h3>
+                            <p class="text-sm font-medium text-portfolio-soft mb-2">Focus: Embedded Systems, Real-time Reminders | <span class="time-period">Personal Project</span></p>
+                            <p class="text-sm text-portfolio-soft">
+                                A smart scheduling system embedded in a digital wall clock that allows users to set tasks and receive real-time reminders. Enhances productivity by integrating time display with task management.
+                            </p>
+                            <span class="inline-block mt-3 text-xs text-portfolio-accent border border-portfolio-accent/50 px-3 py-1 rounded-full font-semibold bg-portfolio-card/50 shadow-md">Details Available Upon Contact</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Skills Section - Now purely technical/data focused -->
+        <section id="skills" class="card p-8 rounded-2xl">
+            <h2 class="section-title text-3xl">Technical Expertise & Experience</h2>
+            <div class="grid grid-cols-1 gap-10">
+                
+                <!-- Technical Skills (Strictly from Resume - Full Width) -->
+                <div>
+                    <p class="text-lg font-bold text-portfolio-accent mb-5 border-b-2 border-portfolio-soft/20 pb-2">AI, Data & Development Core Skills</p>
+                    <div class="flex flex-wrap gap-4">
+                        <!-- Languages -->
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Python</span>
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Javascript</span>
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">HTML & CSS</span>
+                        <!-- AI & Data Science -->
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Deep Learning</span>
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Model Optimization</span>
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Data Analytics</span>
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Data Preprocessing</span>
+                        <!-- Tools & Libraries -->
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Power BI</span>
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Pandas & NumPy</span>
+                        <span class="skill-tag text-sm px-4 py-1.5 rounded-full font-medium transition duration-200 hover:scale-110">Matplotlib</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Education and Experience -->
+            <div class="mt-10 pt-8 border-t border-portfolio-soft/30 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education Card -->
+                <div>
+                    <h3 class="text-xl font-semibold text-portfolio-dark mb-4">Education</h3>
+                    <div class="border-l-4 border-portfolio-accent pl-4 py-2">
+                        <p class="text-lg font-semibold text-portfolio-dark">B.E. AI and Data Science</p>
+                        <p class="text-sm font-medium text-portfolio-soft">Avinashilingam Institute (Expected <span class="time-period">2026</span>)</p>
+                    </div>
+                </div>
+                
+                <!-- Relevant Experience (in boxes) -->
+                <div>
+                    <h3 class="text-xl font-semibold text-portfolio-dark mb-4">Relevant Experience</h3>
+                    <div class="space-y-4">
+                        
+                        <!-- Internship 1: Machine Learning Intern -->
+                        <div class="experience-box p-4 rounded-lg">
+                            <h4 class="text-lg font-semibold text-portfolio-accent">Machine Learning Intern</h4>
+                            <p class="text-sm font-medium text-portfolio-soft mb-2">Prodigy Infotech (<span class="time-period">2023</span>)</p>
+                            <p class="text-sm text-portfolio-soft">
+                                Developed and trained ML models using Python and Scikit-learn, applying data preprocessing, supervised/unsupervised learning, and optimization for improved accuracy.
+                            </p>
+                        </div>
+                        
+                        <!-- Internship 2: Data Analyst Intern -->
+                        <div class="experience-box p-4 rounded-lg">
+                            <h4 class="text-lg font-semibold text-portfolio-accent">Data Analyst Intern</h4>
+                            <p class="text-sm font-medium text-portfolio-soft mb-2">NXT Logic Software Solution (<span class="time-period">2024</span>)</p>
+                            <p class="text-sm text-portfolio-soft">
+                                Performed data analysis using Python and Excel, involving data cleaning, visualization, and statistical techniques to extract insights and support decision-making.
+                            </p>
+                        </div>
+                        
+                        <!-- Internship 3: AI Intern -->
+                        <div class="experience-box p-4 rounded-lg">
+                            <h4 class="text-lg font-semibold text-portfolio-accent">Artificial Intelligence Intern</h4>
+                            <p class="text-sm font-medium text-portfolio-soft mb-2">Inspire AI (<span class="time-period">2025</span>)</p>
+                            <p class="text-sm text-portfolio-soft">
+                                Assisted in building AI models using Python, working with basic machine learning algorithms and simple deep learning techniques.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Me Section - Max Advanced Styling -->
+        <section id="contact" class="card p-10 rounded-2xl text-center">
+            <h2 class="section-title text-3xl">Connect & Collaborate</h2>
+            <p class="text-2xl font-serif text-portfolio-dark mb-10 tracking-wide">
+                Ready to discuss a data project or a full-time role? Let's build the future with AI.
+            </p>
+            
+            <!-- Extreme Enhanced Contact Links Container -->
+            <div class="inline-flex flex-wrap justify-center gap-8 p-6 rounded-xl bg-portfolio-hero-bg border-2 border-portfolio-accent/50 shadow-accent-glow">
+                
+                <!-- Email -->
+                <a href="mailto:itsnargese@gmail.com" class="flex items-center text-lg font-medium text-portfolio-dark hover:text-portfolio-accent transition duration-200 group hover:scale-105">
+                    <i data-lucide="mail" class="w-6 h-6 mr-3 text-portfolio-accent group-hover:rotate-6"></i>
+                    Email 
+                </a>
+                
+                <!-- Phone -->
+                <a href="tel:9843043378" class="flex items-center text-lg font-medium text-portfolio-dark hover:text-portfolio-accent transition duration-200 group hover:scale-105">
+                    <i data-lucide="phone" class="w-6 h-6 mr-3 text-portfolio-accent"></i>
+                    Contact
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/itsnargese" target="_blank" class="flex items-center text-lg font-medium text-portfolio-dark hover:text-portfolio-accent transition duration-200 group hover:scale-105">
+                    <i data-lucide="linkedin" class="w-6 h-6 mr-3 text-portfolio-accent group-hover:scale-110"></i>
+                    LinkedIn 
+                </a>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/itsnargese" target="_blank" class="flex items-center text-lg font-medium text-portfolio-dark hover:text-portfolio-accent transition duration-200 group hover:scale-105">
+                    <i data-lucide="github" class="w-6 h-6 mr-3 text-portfolio-accent group-hover:animate-bounce"></i>
+                    GitHub 
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 text-sm text-portfolio-soft border-t-2 border-portfolio-accent/30 mt-10">
+            <p class="font-bold text-portfolio-dark">Designed and Coded by Nargese Banu S | AI/Data Focused</p>
+            <p class="mt-2 text-xs">© 2025. All rights reserved.</p>
+        </footer>
+
+    </div>
+    
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
